@@ -64,8 +64,9 @@ exports.rijks = function(req,res) {
 
 exports.scrapiRandom = function(req,res) {
 	
+	var localhost = "http://0.0.0.0:80";
 	var randomUrl = "http://scrapi.org/random?images=true";
-	request.get(randomUrl, function(err,response,data){
+	request.get(localhost, function(err,response,data){
 		if(err) {
 			res.send("There was was an error requesting the URL")
 		}
