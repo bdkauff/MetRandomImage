@@ -2,21 +2,13 @@
 var request = require("request");
 
 
-/*
- * GET home page.
- */
-
 var siteTitle = "MET template";
 
 exports.index = function(req, res){
-	
-
 	var templateData = {
-
 		title : siteTitle
 	}
-
-  	res.render("index.html", templateData);
+	res.render("index.html", templateData);
 };
 
 exports.europeana = function(req, res) {
@@ -27,10 +19,8 @@ exports.europeana = function(req, res) {
 		request.get(baseUrl + apiKey + query, function(err, response, data){
 			if(err) {
 			res.send("There was an error requesting the url.")
-		}
+			}
 			var apiData = JSON.parse(data);
-			
-
 			var templateData =  {
 				data : apiData
 			}
@@ -45,7 +35,6 @@ exports.rijks = function(req,res) {
 	request.get(testUrl, function(err, response, data) {
 		if(err) {
 			console.log("There was an error requesting the url")
-
 		}
 		var parseString = require('xml2js').parseString;
 		var xml = data;
@@ -53,7 +42,6 @@ exports.rijks = function(req,res) {
 			//console.log(result);
 			var json = JSON.stringify(result);
 			console.log(json);
-
 			var templateData = {
 			json : json
 			}	
@@ -70,27 +58,11 @@ exports.scrapiRandom = function(req,res) {
 		if(err) {
 			res.send("There was was an error requesting the URL")
 		}
-
 		apiData = JSON.parse(data);
-
 		var templateData = {
 			image : apiData.image
 		}
-		
 		res.render("index.html", templateData);
 	});
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
