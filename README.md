@@ -1,3 +1,3 @@
 This is a simple Node script written for the purpose of exploring various musueum API's, mostly for my own research.
 
-The route '/scrapi/random' is a little bit more fun. Piggybacking on the very cool [scrAPI](https://github.com/jedahan/collections-api/blob/master/Readme.md), this will return a random (and hi-res) image from the Metropolitan Museum's website, which makes available to the public upwards of 300,000 object images!
+The route '/scrapi/random' is a little bit more fun. Piggybacking on the very cool [scrAPI](https://github.com/jedahan/collections-api/blob/master/Readme.md), this will return a random (and hi-res) image from the Metropolitan Museum's website, which makes available to the public upwards of 300,000 object images! If '/scrapi/random' isn't working, it probably means scrAPI is down.
