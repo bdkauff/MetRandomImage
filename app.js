@@ -49,6 +49,7 @@ var routes = require('./routes/index.js');
 app.get('/europeana', routes.europeana);
 app.get('/rijks', routes.rijks);
 app.get('/', routes.scrapiRandom);
+app.get('/query', routes.scrapiRandom);
 
 // create NodeJS HTTP server using 'app'
 

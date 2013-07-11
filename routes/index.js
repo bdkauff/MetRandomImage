@@ -1,7 +1,9 @@
 var request = require("request");
+var async = require("async");
 
+exports.index = function(req, res){
 
-var siteTitle = "MET template";
+};
 
 exports.europeana = function(req, res) {
 	
@@ -46,22 +48,50 @@ exports.rijks = function(req,res) {
 };
 
 exports.scrapiRandom = function(req,res) {
-	
-	var localhost = "http://0.0.0.0:80";
-	var randomUrl = "http://scrapi.org/random?images=true";
-	
-	request.get(randomUrl, function(err, response, data){
+	//Each "scene" begins with a hit to scrAPI random image request
+	var randomImageUrl = "http://scrapi.org/random?images=true";
+
+	request.get(randomImageUrl, function(err, response, data) {
 		if(err) {
 			res.send("There was was an error requesting the URL")
 		}
-		console.log(data);
+
 		apiData = JSON.parse(data);
+		console.log(apiData);
 		
-		var templateData = {
-			image : apiData.image,
-			_url: randomUrl
+		templateData = {
+			medium : apiData.Medium,
+			what : apiData.What,
+			whereBroad : apiData.Where[0],
+			whereSpecific : apiData.Where[1],
+			image : apiData.image
 		}
+		
+		console.log(templateData);
 		res.render("index.html", templateData);
 	});
-
 };
+
+exports.scrapiQuery = function(req, res) {
+
+	var queryString = "africa";
+	var queryUrl = "http://scrapi.org/ids?query=" + queryString;
+
+	request.get(queryUrl, function(err, response, data){
+		if(err) {
+			res.send("There was an error requesting the URL")
+		}
+		apiData = JSON.parse(data);
+		console.log(apiData);
+		
+		var templateData = {
+			medium : apiData.Medium,
+			what : apiData.What,
+			whereBroad : apiData.Where[0],
+			whereSpecific : apiData.Where[1],
+			image : apiData.image
+		};
+		console.log(templateData);
+		res.render("index.html", templateData);
+	});
+}
