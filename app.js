@@ -6,6 +6,7 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+var request = require("request");
 
 
 
@@ -46,10 +47,9 @@ app.configure('development', function(){
 
 // ROUTES
 var routes = require('./routes/index.js');
-app.get('/', routes.index);
 app.get('/europeana', routes.europeana);
 app.get('/rijks', routes.rijks);
-app.get('/scrapi/random', routes.scrapiRandom);
+app.get('/', routes.scrapiRandom);
 
 // create NodeJS HTTP server using 'app'
 

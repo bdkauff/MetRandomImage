@@ -1,16 +1,7 @@
-
 var request = require("request");
 
 
 var siteTitle = "MET template";
-
-exports.index = function(req, res){
-	
-	var templateData = {
-		title : siteTitle
-	}
-	res.render("index.html", templateData);
-};
 
 exports.europeana = function(req, res) {
 	
@@ -59,13 +50,16 @@ exports.scrapiRandom = function(req,res) {
 	var localhost = "http://0.0.0.0:80";
 	var randomUrl = "http://scrapi.org/random?images=true";
 	
-	request.get(localhost, function(err,response,data){
+	request.get(randomUrl, function(err, response, data){
 		if(err) {
 			res.send("There was was an error requesting the URL")
 		}
+		console.log(data);
 		apiData = JSON.parse(data);
+		
 		var templateData = {
-			image : apiData.image
+			image : apiData.image,
+			_url: randomUrl
 		}
 		res.render("index.html", templateData);
 	});
