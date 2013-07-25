@@ -12,17 +12,18 @@ exports.scrapiRandom = function(req,res) {
 
 		apiData = JSON.parse(data);
 		console.log(apiData);
+			
+			templateData = {
+				medium : apiData.Medium,
+				what : apiData.What,
+				whereBroad : apiData.Where[0],
+				whereSpecific : apiData.Where[1],
+				image : apiData.image
+			}
+
+			console.log(templateData);
+			res.render("index.html", templateData);
 		
-		templateData = {
-			medium : apiData.Medium,
-			what : apiData.What,
-			whereBroad : apiData.Where[0],
-			whereSpecific : apiData.Where[1],
-			image : apiData.image
-		}
-		
-		console.log(templateData);
-		res.render("index.html", templateData);
 	});
 };
 
