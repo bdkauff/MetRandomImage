@@ -16,8 +16,8 @@ exports.scrapiRandom = function(req,res) {
 			templateData = {
 				medium : apiData.Medium,
 				what : apiData.What,
-				whereBroad : apiData.Where[0],
-				whereSpecific : apiData.Where[1],
+				whereBroad : apiData.where[0],
+				whereSpecific : apiData.where[1],
 				image : apiData.image
 			}
 
